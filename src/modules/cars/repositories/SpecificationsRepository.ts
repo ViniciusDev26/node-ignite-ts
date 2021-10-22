@@ -6,8 +6,19 @@ import {
 
 class SpecificationsRepository implements ISpecificationsRepository {
   private specifications: Specification[];
-  constructor() {
+
+  private static INSTACE: SpecificationsRepository;
+
+  private constructor() {
     this.specifications = [];
+  }
+
+  public static getInstance() {
+    if (!SpecificationsRepository.INSTACE) {
+      SpecificationsRepository.INSTACE = new SpecificationsRepository();
+    }
+
+    return SpecificationsRepository.INSTACE;
   }
 
   list() {
