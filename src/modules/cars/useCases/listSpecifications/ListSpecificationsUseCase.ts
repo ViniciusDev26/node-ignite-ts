@@ -1,10 +1,12 @@
-import { Specification } from "../../entities/Specification";
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 class ListSpecificationsUseCase {
   constructor(private specificationsRepository: ISpecificationsRepository) {}
-  execute(): Specification[] {
-    return this.specificationsRepository.list();
+
+  async execute() {
+    const specifications = await this.specificationsRepository.list();
+
+    return specifications;
   }
 }
 
