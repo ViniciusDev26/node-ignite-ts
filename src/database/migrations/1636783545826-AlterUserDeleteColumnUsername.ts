@@ -4,7 +4,7 @@ export class AlterUserDeleteColumnUsername1636783545826
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropColumn("user", "username");
+    await queryRunner.dropColumn("users", "username");
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
