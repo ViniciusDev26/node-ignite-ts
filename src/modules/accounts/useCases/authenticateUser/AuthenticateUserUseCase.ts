@@ -37,7 +37,6 @@ class AuthenticateUseUseCase {
 
     const token = sign(
       {
-        id: user.id,
         name: user.name,
         email: user.email,
       },
