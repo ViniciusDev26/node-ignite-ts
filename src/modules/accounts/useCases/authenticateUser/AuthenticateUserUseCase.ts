@@ -2,6 +2,7 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
+import { UnathorizedError } from "../../../../errors/UnathorizedError";
 import { UsersRepository } from "../../repositories/implementations/UsersRepository";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
@@ -27,12 +28,12 @@ class AuthenticateUseUseCase {
   async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.userRepository.findByEmail(email);
     if (!user) {
-      throw new Error("Email or password incorrect!");
+      throw new UnathorizedError("Email or password incorrect!");
     }
 
     const verifyPassword = await compare(password.toString(), user.password);
     if (!verifyPassword) {
-      throw new Error("Email or password incorrect!");
+      throw new UnathorizedError("Email or password incorrect!");
     }
 
     const token = sign(

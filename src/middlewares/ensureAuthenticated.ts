@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 import { container } from "tsyringe";
 
+import { BadRequestError } from "../errors/BadRequestError";
+import { UnathorizedError } from "../errors/UnathorizedError";
 import { UsersRepository } from "../modules/accounts/repositories/implementations/UsersRepository";
 
 interface IPayload {
@@ -15,7 +17,7 @@ async function ensureAuthenticated(
 ) {
   const authHeader = request.headers.authorization;
   if (!authHeader) {
-    throw new Error("JWT token is missing");
+    throw new BadRequestError("JWT token is missing");
   }
 
   const [, token] = authHeader.split(" ");
@@ -29,12 +31,12 @@ async function ensureAuthenticated(
     const user = await usersRepository.findById(userId);
 
     if (!user) {
-      throw new Error("User not found");
+      throw new UnathorizedError("User not found");
     }
 
     return next();
   } catch (err) {
-    throw new Error("Invalid JWT token");
+    throw new UnathorizedError("Invalid JWT token");
   }
 }
 
