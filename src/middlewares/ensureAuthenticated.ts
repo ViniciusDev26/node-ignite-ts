@@ -34,6 +34,10 @@ async function ensureAuthenticated(
       throw new UnathorizedError("User not found");
     }
 
+    request.user = {
+      id: userId,
+    };
+
     return next();
   } catch (err) {
     throw new UnathorizedError("Invalid JWT token");
