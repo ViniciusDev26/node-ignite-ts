@@ -22,8 +22,6 @@ class CreateUserUseCase {
     if (userAlreadyExists) {
       throw new AlreadyExistsError("User already exists");
     }
-    console.log(`passwordHash`);
-
     const passwordHash = await hash(password, 8);
     await this.usersRepository.create({
       name,
