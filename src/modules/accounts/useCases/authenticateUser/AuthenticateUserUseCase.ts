@@ -2,9 +2,9 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
-import { UnathorizedError } from "../../../../errors/UnathorizedError";
-import { UsersRepository } from "../../repositories/implementations/UsersRepository";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { UnathorizedError } from "@errors/UnathorizedError";
+import { UsersRepository } from "@modules/accounts/repositories/implementations/UsersRepository";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 
 interface IRequest {
   email: string;

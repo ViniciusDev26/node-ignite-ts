@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
-import { AlreadyExistsError } from "../../../../errors/AlreadyExistsError";
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
+import { AlreadyExistsError } from "@errors/AlreadyExistsError";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 interface IRequest {
   name: string;

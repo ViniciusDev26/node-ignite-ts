@@ -1,5 +1,6 @@
-import { AppError } from "../../../../errors/AppError";
-import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory";
+import { AlreadyExistsError } from "@errors/AlreadyExistsError";
+import { CategoriesRepositoryInMemory } from "@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory";
+
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 let createCategoryUseCase: CreateCategoryUseCase;
@@ -43,6 +44,6 @@ describe("create a new category", () => {
         name,
         description,
       });
-    }).rejects.toBeInstanceOf(AppError);
+    }).rejects.toBeInstanceOf(AlreadyExistsError);
   });
 });
