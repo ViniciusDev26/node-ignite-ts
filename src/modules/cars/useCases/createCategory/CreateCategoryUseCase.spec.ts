@@ -1,5 +1,5 @@
-import { AlreadyExistsError } from "@errors/AlreadyExistsError";
 import { CategoriesRepositoryInMemory } from "@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory";
+import { AlreadyExistsError } from "@shared/errors/AlreadyExistsError";
 
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 

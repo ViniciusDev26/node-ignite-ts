@@ -1,6 +1,6 @@
-import { UnathorizedError } from "@errors/UnathorizedError";
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
+import { UnathorizedError } from "@shared/errors/UnathorizedError";
 
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUseUseCase } from "./AuthenticateUserUseCase";
